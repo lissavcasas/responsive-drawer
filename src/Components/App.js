@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Writers from './Writers';
 import { NotFound } from './Errors';
+import Layout from '../Components/Layout'
 
 class App extends Component {
   constructor(props) {
@@ -31,8 +32,8 @@ class App extends Component {
 
     return (
       <BrowserRouter>
-        <Fragment>
-          <ul>
+        <Layout writers={writers}>
+          {/* <ul>
             <li>
               <Link to="/">Home</Link>
             </li>
@@ -41,7 +42,7 @@ class App extends Component {
             </li>
           </ul>
 
-          <hr />
+          <hr /> */}
           <Switch>
             <Route exact path="/" render={() => <div>Home</div>} />
             <Route path="/writers" render={
@@ -49,7 +50,7 @@ class App extends Component {
             } />
             <Route component={NotFound} />
           </Switch>
-        </Fragment>
+        </Layout>
       </BrowserRouter>
     );
   }
